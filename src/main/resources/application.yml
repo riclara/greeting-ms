@@ -1,18 +1,29 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL:http://user:password@localhost:1111}/eureka/
-security:
-  user:
-    password: ${eureka.password}
-
----
+# Spring properties
 spring:
-  profiles: heroku
+  application:
+     name: greeting-service  # Service registers under this name
+  freemarker:
+    enabled: false           # Ignore Eureka dashboard FreeMarker templates
+  thymeleaf:
+    cache: false             # Allow Thymeleaf templates to be reloaded at runtime
+    prefix: classpath:/templates/    # Trailing / mandatory
+                             # Template location for this application only
+ 
+# Discovery Server Access
 eureka:
   instance:
     hostname: ${DOMAIN_NAME:localhost}
-    nonSecurePort: 80
+    nonSecurePort: ${DOMAIN_PORT:${server.port}}
   password: ${USER_PASSWORD:password}
+  
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:1111}/eureka/  
+
+security:
+  user:
+    password: ${eureka.password}
  
 # HTTP Server
+server:
+  port: 2222   # HTTP (Tomcat) port
