@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: greeting-service
+server:
+  port: 2222   # HTTP (Tomcat) port
