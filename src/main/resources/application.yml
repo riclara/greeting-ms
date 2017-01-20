@@ -11,9 +11,18 @@ spring:
  
 # Discovery Server Access
 eureka:
+  instance:
+    hostname: ${DOMAIN_NAME:http://localhost:2222}
+    nonSecurePort: 80
+  password: ${USER_PASSWORD:password}
+  
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URL:http://localhost:1111}/eureka/
+      defaultZone: ${EUREKA_URL:http://localhost:1111}/eureka/  
+
+security:
+  user:
+    password: ${eureka.password}
  
 # HTTP Server
 server:
