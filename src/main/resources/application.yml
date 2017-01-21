@@ -14,11 +14,10 @@ eureka:
   instance:
     hostname: ${DOMAIN_NAME:localhost}
     nonSecurePort: ${DOMAIN_PORT:${server.port}}
-  password: ${USER_PASSWORD:password}
   
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URL:http://localhost:1111}/eureka/  
+      defaultZone: ${EUREKA_URL:http://admin:password@localhost:1111}/eureka/  
 
 security:
   user:
