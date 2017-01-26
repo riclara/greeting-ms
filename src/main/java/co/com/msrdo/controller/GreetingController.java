@@ -24,5 +24,13 @@ public class GreetingController {
 
         return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
     }
+	
+	@RequestMapping("/")
+	public HttpEntity<String> greeting1() {
+
+        return new ResponseEntity<String>("Hola", HttpStatus.OK);
+    }
+
+	
 
 }
